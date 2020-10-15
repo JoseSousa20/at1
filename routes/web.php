@@ -66,7 +66,12 @@ Route::get('/tarefas', function(){
     $tarefas = [
         'Comprar senha',
         'Imprimir fotocópias',
-        'Carregar cartão'
+        'Carregar cartão',
+        'Entregar Fotocópias'
     ];
     return view('tarefas', ['tarefas' => $tarefas]);
 });
+
+Route::get('/entrada', 'App\Http\Controllers\PortalController@index');
+
+Route::get('/equipas', 'App\Http\Controllers\PortalController@listarEquipas');
