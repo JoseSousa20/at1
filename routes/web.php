@@ -56,3 +56,17 @@ Route::get('/repetir/{nome}/{num}', function($nome, $n) {
 Route::get('welcome', function() {
     return view('bemvindo');
 });
+
+Route::get('/nomes2/{name}/{surname}', function ($nome=null, $apelido=null){
+   return view('mostranome', ['nome' => $nome, 'apelido' => $apelido
+   ]); 
+});
+
+Route::get('/tarefas', function(){
+    $tarefas = [
+        'Comprar senha',
+        'Imprimir fotocópias',
+        'Carregar cartão'
+    ];
+    return view('tarefas', ['tarefas' => $tarefas]);
+});
