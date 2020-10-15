@@ -52,3 +52,7 @@ Route::get('/repetir/{nome}/{num}', function($nome, $n) {
     }
    return; 
 });
+
+Route::get('welcome', function() {
+    return view('bemvindo');
+});
