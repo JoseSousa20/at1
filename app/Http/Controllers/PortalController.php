@@ -7,36 +7,37 @@ use Illuminate\Http\Request;
 class PortalController extends Controller
 {
     //
+    public $equipas = [
+        'CD Aves',
+        'FC Porto',
+        'SL Benfica',
+        'Vitoria SC',
+        'SC Braga'
+    ];
+
     public function index() {
         return  view('entrada');
     }
     public function listarEquipas () {
-        $equipas = [
-            'CD Aves',
-            'FC Porto',
-            'SL Benfica',
-            'Vitoria SC',
-            'SC Braga'
-        ];
-        return view('equipas' ,['equipas' => $equipas]);
+        
+        return view('equipas' ,['equipas' => $this -> equipas]);
     }
     public function listarEquipa (Request $request) {
-        $equipas = [
-            'CD Aves',
-            'FC Porto',
-            'SL Benfica',
-            'Vitoria SC',
-            'SC Braga'
-        ];
-        $contar = count($equipas);
         
-        if($request -> chave  >= 0 && $request -> chave < $contar){
-            $equipa = $equipas[$request -> chave];
+        $contar = count($this -> equipas);
+        $n = is_numeric($request -> chave); 
+    if(isset($request -> chave)) {
+        if($request -> chave  >= 0 && $request -> chave < $contar && $n){
+            $this ->equipas = $this -> equipas[$request -> chave];
         } 
         else{
-            $equipa = 'Erro';
+            $this ->equipas = 'Erro';
         }
-        return view('equipas', ['equipa' => $equipa]);
+        return view('equipas', ['equipa' => $this -> equipa]);
     }
+    else{
+        return view('equipas', ['equipa' => $this -> equipas]);
+    }
+}
 
 }
