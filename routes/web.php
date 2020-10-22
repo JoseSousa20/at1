@@ -72,8 +72,8 @@ Route::get('/tarefas', function(){
     return view('tarefas', ['tarefas' => $tarefas]);
 });
 
-Route::get('/entrada', 'App\Http\Controllers\PortalController@index');
+Route::get('/entrada', 'App\Http\Controllers\PortalController@index')->name('entrada.index');
 
-Route::get('/equipas', 'App\Http\Controllers\PortalController@listarEquipas');
+Route::get('/equipas', 'App\Http\Controllers\PortalController@listarEquipas')->name('equipa.listarEquipas');
 
 Route::get('/listar-equipas/{chave?}', 'App\Http\Controllers\PortalController@listarEquipa');
